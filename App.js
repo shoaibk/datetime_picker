@@ -1,20 +1,26 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useContext, useState } from "react";
+import { SafeAreaView, StyleSheet, View } from "react-native";
+import DatePicker from "react-native-modern-datepicker";
 
-export default function App() {
+export default function AddPersonScreen() {
+  const [dob, setDob] = useState("");
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <SafeAreaView>
+      <DatePicker
+        onSelectedChange={(selectedDate) => {
+          setDob(selectedDate);
+          console.log("Date: ", selectedDate);
+        }}
+        mode="calendar"
+      />
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "#fff",
   },
 });
